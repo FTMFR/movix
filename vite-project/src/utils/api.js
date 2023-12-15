@@ -15,11 +15,10 @@ export const fetchDataFromApi = async (url, params) => {
             params
         });
         return data;
-    }
-    catch (err) {
+    } catch (err) {
         console.log(err);
         return err;
-    };
+    }
 };
 
 

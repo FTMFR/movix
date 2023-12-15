@@ -6,7 +6,7 @@ const HeroBanner = () => {
   // const [background, setBackground] = useState("");
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
-  
+
   const searchQueryHandler = (event) => {
     if (event.key === "Enter" && query.length > 0) {
       navigate(`/search/${query}`);
