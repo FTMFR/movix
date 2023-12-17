@@ -9,6 +9,7 @@ import dayjs from "dayjs";
 import ContentWrapper from "../contentWrapper/ContentWrapper";
 import Img from "../lazyLoadingImage/img";
 import PosterFallback from "../../assets/no-poster.png";
+import CircleRating from "../circleRating/CircleRating";
 import "./style.scss";
 
 const Carousel = ({ data, loading }) => {
@@ -20,6 +21,18 @@ const Carousel = ({ data, loading }) => {
     console.log(dir);
   };
 
+  const skItem = () => {
+    return (
+      <div className="skeletonItem">
+        <div className="posterBlock skeleton"></div>
+        <div className="textBlock">
+          <div className="title skeleton"></div>
+          <div className="date skeleton"></div>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="carousel">
       <ContentWrapper>
@@ -28,25 +41,44 @@ const Carousel = ({ data, loading }) => {
           onClick={() => navigation("left")}
         />
         <BsFillArrowRightCircleFill
-          className="carouselRightNav arrow"
+          className="carouselRighttNav arrow"
           onClick={() => navigation("right")}
         />
         {!loading ? (
           <div className="carouselItems">
             {data?.map((item) => {
-            //   const posterUrl =PosterFallback;
+              const posterUrl = item.poster_path
+                ? url.poster + item.poster_path
+                : PosterFallback;
               console.log(data);
               return (
                 <div className="carouselItem" key={item.id}>
                   <div className="posterBlock">
-                    <Img src={PosterFallback} />
+                    <Img src={posterUrl} />
+                    <CircleRating 
+                    rating={item.vote_average.toFixed(
+                        1
+                    )}
+                    />
+                  </div>
+                  <div className="textBlock">
+                    <span className="title">{item.title || item.name}</span>
+                    <span className="date">
+                      {dayjs(item.release_date).format("MMM D, YYYY")}
+                    </span>
                   </div>
                 </div>
               );
             })}
           </div>
         ) : (
-          <span>Loading...</span>
+          <div className="loadingSkeleton">
+            {skItem()}
+            {skItem()}
+            {skItem()}
+            {skItem()}
+            {skItem()}
+          </div>
         )}
       </ContentWrapper>
     </div>
