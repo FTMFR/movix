@@ -4,6 +4,7 @@ import "./style.scss";
 const SwitchTabs = ({ data, onTabChange }) => {
   const [selectTab, setSelectTab] = useState(0);
   const [left, setLeft] = useState(0);
+  
   const activeTab = (tab, index) => {
     setLeft(index * 100);
 
