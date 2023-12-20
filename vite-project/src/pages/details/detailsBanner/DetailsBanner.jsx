@@ -154,10 +154,10 @@ const DetailsBanner = ({ video, crew }) => {
                   </div>
                 </div>
                 <VideoPopup
-                show={show}
-                setShow={setShow}
-                videoId={videoId}
-                setVideoId={setVideoId}
+                  show={show}
+                  setShow={setShow}
+                  videoId={videoId}
+                  setVideoId={setVideoId}
                 />
               </ContentWrapper>
             </React.Fragment>
