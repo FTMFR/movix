@@ -1,4 +1,4 @@
-import { UseSelector, useSelector } from "react-redux/es/hooks/useSelector";
+import { useSelector } from "react-redux/es/hooks/useSelector";
 import ContentWrapper from "../../../components/contentWrapper/ContentWrapper";
 import Img from "../../../components/lazyLoadingImage/img";
 import avatar from "../../../assets/avatar.png";
@@ -22,7 +22,22 @@ const Cast = ({ data, loading }) => {
       <ContentWrapper>
         <div className="sectionHeading">Top Cast</div>
         {!loading ? (
-          <div className="listItems">Cast Data...</div>
+          <div className="listItems">
+            {data?.map((item) => {
+              let imgUrl = item.profile_path
+                ? url.profile + item.profile_path
+                : avatar;
+              return (
+                <div className="listItem" key={item.id}>
+                  <div className="profileImg">
+                    <Img src={imgUrl} />
+                  </div>
+                  <div className="name">{item.name}</div>
+                  <div className="character">{item.character}</div>
+                </div>
+              );
+            })}
+          </div>
         ) : (
           <div className="castSkeleton">
             {skeleton()}
