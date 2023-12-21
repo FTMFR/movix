@@ -16,7 +16,7 @@ const SearchResults = () => {
 
   const fetchInitialData = () => {
     setLoading(true);
-    fetchDataFromApi(`/searcg/multi?query=${query}&page=${pageNum}`).then(
+    fetchDataFromApi(`/search/multi?query=${query}&page=${pageNum}`).then(
       (res) => {
         setData(res);
         setPageNum((prev) => prev + 1);
@@ -26,7 +26,7 @@ const SearchResults = () => {
     );
   };
 
-  const fetchNextPageData = () => {
+  const fetchNextPageData = ({ data, loading }) => {
     fetchDataFromApi(`/search/multi?query=${query}&page=${pageNum}`).then(
       (res) => {
         if (data?.results) {
@@ -46,11 +46,26 @@ const SearchResults = () => {
     fetchInitialData();
   }, [query]);
 
-  return <div className="searchResultsPage">
-    {!loading && (
-      
-    )}
-  </div>;
+  return (
+    <div className="searchResultsPage">
+      {loading && <Spinner initial={true} />}
+      {!loading && (
+        <ContentWrapper>
+          {data?.results?.length > 0 ? (
+            <>
+              <div className="pageTitle">
+                {`Search ${
+                  data.total_results > 1 ? "results" : "result"
+                } of '${query}'`}
+              </div>
+            </>
+          ) : (
+            <span className="resultNotFound">Sorry, Results Not Found!</span>
+          )}
+        </ContentWrapper>
+      )}
+    </div>
+  );
 };
 
 export default SearchResults;
