@@ -2,7 +2,7 @@ import React from "react";
 import dayjs from "dayjs";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useNavigate } from "react-router-dom";
-import Img from "../lazyLoadingImage/img";
+import Img from "../lazyLoadingImage/Img";
 import CircleRating from "../circleRating/CircleRating";
 import Genres from "../genres/Genres";
 import PosterFallBack from "../../assets/no-poster.png";

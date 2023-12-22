@@ -6,7 +6,7 @@ import ContentWrapper from "../../../components/contentWrapper/ContentWrapper";
 import useFetch from "../../../hooks/useFetch";
 import Genres from "../../../components/genres/Genres";
 import CircleRating from "../../../components/circleRating/CircleRating";
-import Img from "../../../components/lazyLoadingImage/img";
+import Img from "../../../components/lazyLoadingImage/Img";
 import PosterFallback from "../../../assets/no-poster.png";
 import { PlayIcon } from "../PlayIcon";
 import VideoPopup from "../../../components/videoPopup/VideoPopup";

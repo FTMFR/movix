@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import ContentWrapper from "../../../components/contentWrapper/ContentWrapper";
-import Img from "../../../components/lazyLoadingImage/img";
+import Img from "../../../components/lazyLoadingImage/Img";
 import avatar from "../../../assets/avatar.png";
 import "./style.scss";
 
